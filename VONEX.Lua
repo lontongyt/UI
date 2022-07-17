@@ -1,76 +1,5 @@
 while not game:IsLoaded() do wait() end
 
-local VONEX_LOADER = Instance.new("ScreenGui")
-local TweenPart_FRAME = Instance.new("Frame")
-local TweenPart_FRAMEUICORNER = Instance.new("UICorner")
-local TweenPart_FRAME_INNER = Instance.new("Frame")
-local TweenPart_FRAME_INNERUICORNER = Instance.new("UICorner")
-local VONEX_TXT = Instance.new("TextLabel")
-
-VONEX_LOADER.Name = "VONEX_LOADER"
-VONEX_LOADER.Parent = game.CoreGui
-VONEX_LOADER.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-VONEX_LOADER.ResetOnSpawn = false
-
-TweenPart_FRAME.Name = "TweenPart_FRAME"
-TweenPart_FRAME.Parent = VONEX_LOADER
-TweenPart_FRAME.AnchorPoint = Vector2.new(0.5, 0.5)
-TweenPart_FRAME.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TweenPart_FRAME.BorderSizePixel = 0
-TweenPart_FRAME.ClipsDescendants = true
-TweenPart_FRAME.Position = UDim2.new(0.5, 0, 0.5, 0)
-
-TweenPart_FRAMEUICORNER.CornerRadius = UDim.new(0, 1000)
-TweenPart_FRAMEUICORNER.Name = "TweenPart_FRAMEUICORNER"
-TweenPart_FRAMEUICORNER.Parent = TweenPart_FRAME
-
-TweenPart_FRAME_INNER.Name = "TweenPart_FRAME_INNER"
-TweenPart_FRAME_INNER.Parent = TweenPart_FRAME
-TweenPart_FRAME_INNER.AnchorPoint = Vector2.new(0.5, 0.5)
-TweenPart_FRAME_INNER.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-TweenPart_FRAME_INNER.BorderSizePixel = 0
-TweenPart_FRAME_INNER.Position = UDim2.new(0, 50, 0, 50)
-
-TweenPart_FRAME_INNERUICORNER.CornerRadius = UDim.new(0, 1000)
-TweenPart_FRAME_INNERUICORNER.Name = "TweenPart_FRAME_INNERUICORNER"
-TweenPart_FRAME_INNERUICORNER.Parent = TweenPart_FRAME_INNER
-
-VONEX_TXT.Name = "VONEX_TXT"
-VONEX_TXT.Parent = TweenPart_FRAME_INNER
-VONEX_TXT.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-VONEX_TXT.BackgroundTransparency = 1.000
-VONEX_TXT.BorderSizePixel = 0
-VONEX_TXT.Size = UDim2.new(0, 100, 0, 100)
-VONEX_TXT.ZIndex = 3
-VONEX_TXT.Font = Enum.Font.GothamBold
-VONEX_TXT.Text = "VONEX"
-VONEX_TXT.TextColor3 = Color3.fromRGB(255, 255, 255)
-VONEX_TXT.TextSize = 14.000
-
-local function MBIQ_fake_script() -- VONEX_LOADER.LocalScript 
-	local script = Instance.new('LocalScript', VONEX_LOADER)
-
-	function RUN()
-		game:GetService("TweenService"):Create(script.Parent.TweenPart_FRAME, TweenInfo.new(0.12,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{Size = UDim2.new(0, 100, 0, 100)}):Play()
-		wait(0.12)
-		game:GetService("TweenService"):Create(script.Parent.TweenPart_FRAME.TweenPart_FRAME_INNER, TweenInfo.new(0.12,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{Size = UDim2.new(0, 100, 0, 100)}):Play()
-		wait(2)
-		game:GetService("TweenService"):Create(script.Parent.TweenPart_FRAME.TweenPart_FRAME_INNER.VONEX_TXT, TweenInfo.new(0.12,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{TextTransparency = 0}):Play()
-		wait(2)
-		game:GetService("TweenService"):Create(script.Parent.TweenPart_FRAME.TweenPart_FRAME_INNER.VONEX_TXT, TweenInfo.new(0.12,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{TextTransparency = 1}):Play()
-		wait(0.12)
-		game:GetService("TweenService"):Create(script.Parent.TweenPart_FRAME.TweenPart_FRAME_INNER, TweenInfo.new(0.12,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{Size = UDim2.new(0, 0, 0, 0)}):Play()
-		wait(0.12)
-		game:GetService("TweenService"):Create(script.Parent.TweenPart_FRAME, TweenInfo.new(0.12,Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{Size = UDim2.new(0, 0, 0, 0)}):Play()
-        wait(0.12)
-        script.Parent:Destroy()
-	end
-	RUN()
-end
-coroutine.wrap(MBIQ_fake_script)()
-
-wait(0.12 + 2 + 2 + 0.12 + 0.12 + 0.12)
-
 local Vonex = {}
 local UserInputService = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
@@ -78,7 +7,7 @@ local VonexGui = CoreGui:FindFirstChild("S_Vonex")
 local TweenService = game:GetService("TweenService")
 if VonexGui then VonexGui:Destroy() end
 
-function Vonex:Start(gamename)
+function Vonex:Start(hubname, hubtxt, gamename, versiontype)
     local S_Vonex = Instance.new("ScreenGui")
     local Shadow = Instance.new("ImageLabel")
     local Wind = Instance.new("Frame")
@@ -149,7 +78,7 @@ function Vonex:Start(gamename)
     Vonex.Size = UDim2.new(0, 73, 0, 30)
     Vonex.ZIndex = 3
     Vonex.Font = Enum.Font.GothamMedium
-    Vonex.Text = "VONEX"
+    Vonex.Text = hubname or "VONEX"
     Vonex.TextColor3 = Color3.fromRGB(200, 200, 200)
     Vonex.TextSize = 12.000
     
@@ -253,7 +182,7 @@ function Vonex:Start(gamename)
     MadeBy.Size = UDim2.new(0, 140, 0, 30)
     MadeBy.ZIndex = 3
     MadeBy.Font = Enum.Font.GothamMedium
-    MadeBy.Text = "MADE BY PEAXE"
+    MadeBy.Text = versiontype or "MADE BY PEAXE"
     MadeBy.TextColor3 = Color3.fromRGB(200, 200, 200)
     MadeBy.TextSize = 12.000
     
@@ -288,7 +217,7 @@ function Vonex:Start(gamename)
     VersionType.Size = UDim2.new(0, 60, 0, 30)
     VersionType.ZIndex = 3
     VersionType.Font = Enum.Font.GothamMedium
-    VersionType.Text = "FREE"
+    VersionType.Text = hubtxt or "FREE"
     VersionType.TextColor3 = Color3.fromRGB(200, 200, 200)
     VersionType.TextSize = 12.000
     
