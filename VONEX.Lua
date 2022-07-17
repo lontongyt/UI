@@ -884,14 +884,4 @@ function Vonex:Start(gamename)
 
     return Window
 end
-local Window = Vonex:Start("TITLE")
-local Features = Window:Tab("Page 1", true)
-
-Features:Button("BUTTON", function()
-    PRINT("fusion")
-end)
-Features:Toggle("TOGGLE", function(State)
-    print("Current Status : "..tostring(State))
-end)
-Features:Slider("SLIDER", 16, 36, 86, "%%", 2, function(value) game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value end)
 return Vonex
