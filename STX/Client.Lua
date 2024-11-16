@@ -74,13 +74,13 @@ function Nofitication:Notify(nofdebug, middledebug, all)
         local function ORBHB_fake_script()
             local script = Instance.new('LocalScript', ambientShadow)
         
-            ambientShadow:TweenSize(UDim2.new(0, 240, 0, 90), "Out", "Linear", 0.2)
+            game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 240, 0, 90)}):Play()
             Window.Size = UDim2.new(0, 230, 0, 80)
-            Outline_A:TweenSize(UDim2.new(0, 0, 0, 2), "Out", "Linear", middledebug.Time)
+            game:GetService("TweenService"):Create(Outline_A,TweenInfo.new(middledebug.Time,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 2)}):Play()
     
             wait(middledebug.Time)
         
-            ambientShadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
+            game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
             
             wait(0.2)
             ambientShadow:Destroy()
@@ -105,18 +105,18 @@ function Nofitication:Notify(nofdebug, middledebug, all)
         local function ORBHB_fake_script()
             local script = Instance.new('LocalScript', ambientShadow)
         
-            Outline_A:TweenSize(UDim2.new(0, 0, 0, 2), "Out", "Linear", middledebug.Time)
+            game:GetService("TweenService"):Create(Outline_A,TweenInfo.new(middledebug.Time,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 2)}):Play()
 
             wait(middledebug.Time)
         
-            ambientShadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
+            game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
             
             wait(0.2)
             ambientShadow:Destroy()
         end
         coroutine.wrap(ORBHB_fake_script)()
     elseif SelectedType == "option" then
-        ambientShadow:TweenSize(UDim2.new(0, 240, 0, 110), "Out", "Linear", 0.2)
+        game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 240, 0, 110)}):Play()
         Window.Size = UDim2.new(0, 230, 0, 100)
         local Uncheck = Instance.new("ImageButton")
         local Check = Instance.new("ImageButton")
@@ -153,7 +153,7 @@ function Nofitication:Notify(nofdebug, middledebug, all)
                 pcall(function()
                     all.Callback(false)
                 end)
-                ambientShadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
+                game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
                 
                 wait(0.2)
                 ambientShadow:Destroy()
@@ -163,7 +163,7 @@ function Nofitication:Notify(nofdebug, middledebug, all)
                 pcall(function()
                     all.Callback(true)
                 end)
-                ambientShadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
+                game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
                 
                 wait(0.2)
                 ambientShadow:Destroy()
@@ -172,13 +172,13 @@ function Nofitication:Notify(nofdebug, middledebug, all)
             Uncheck.MouseButton1Click:Connect(Unchecked)
             Check.MouseButton1Click:Connect(Checked)
             
-            Outline_A:TweenSize(UDim2.new(0, 0, 0, 2), "Out", "Linear", middledebug.Time)
+            game:GetService("TweenService"):Create(Outline_A,TweenInfo.new(middledebug.Time,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 2)}):Play()
     
             wait(middledebug.Time)
 
             if Stilthere == true then
         
-                ambientShadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
+                game:GetService("TweenService"):Create(ambientShadow,TweenInfo.new(0.2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
                 
                 wait(0.2)
                 ambientShadow:Destroy()
